@@ -34,21 +34,18 @@ class Solution:
 
         #optimal 2 prefix sum and dict
 
-        prefixCount = defaultdict(int)
-        prefixCount[0] = 1
+        d = defaultdict(int)
+        d[0]=1
 
         currSum = 0
         count = 0
 
-        for num in nums:
-            currSum += num
-
-            count += prefixCount[currSum - target]
-
-            prefixCount[currSum] += 1
+        for i in nums:
+            currSum += i
+            count += d[currSum - target]
+            d[currSum]+=1
 
         return count
-
 
 
                 
