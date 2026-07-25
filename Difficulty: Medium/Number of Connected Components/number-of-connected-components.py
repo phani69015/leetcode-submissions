@@ -1,7 +1,8 @@
 from collections import deque
 class Solution:
     def countConnected(self, V, edges):
-        # code here
+        # code here 
+        
         q = deque()
         
         adj = [[]for _ in range(V)]
@@ -9,23 +10,21 @@ class Solution:
             adj[x].append(y)
             adj[y].append(x)
             
-        vis = [0]*V
-        vis[0]=1
-        q.append(0)
-        count =0
-        while q:
-            key = q.popleft()
-            for nei in adj[key]:
-                if vis[nei]!=1:
-                    vis[nei]=1
-                    q.append(nei)
-            if not q:
-                count +=1
-                for i in range(len(vis)):
-                    if vis[i]==0:
-                        q.append(i)
-                        vis[i]+=1
-                        break
+        vis = [False]*V
+        count = 0
+        
+        for i in range(V):
+            comp = []
+            if not vis[i]:
+                q.append(i)
+                vis[i]=True
+                
+                while q:
+                    key = q.popleft()
+                    for nei in adj[key]:
+                        if not vis[nei]:
+                            vis[nei]=True
+                            q.append(nei)
+                count+=1
         return count
-            
         
