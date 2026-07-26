@@ -62,8 +62,7 @@ class Solution:
         v = [False]*n
         
         def dfs(node):
-            v[node]=True
-            for i in range(n):
+             for i in range(n):
                 if matrix[node][i]==1 and not v[i]:
                     v[i] = True
                     dfs(i)
