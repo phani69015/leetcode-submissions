@@ -11,19 +11,36 @@ class Solution:
 
         vis = [False for _ in range(n)]
         count = 0
-        q = deque()
-        q.append(source)
-        vis[source]=True
+        # q = deque()
+        # q.append(source)
+        # vis[source]=True
 
-        while q:
-            key = q.popleft()
-            for nei in adj[key]:
-                if nei==destination:
-                    return True
+        # while q:
+        #     key = q.popleft()
+        #     for nei in adj[key]:
+        #         if nei==destination
+        #             return True
+        #         if not vis[nei]:
+        #             vis[nei]=True
+        #             q.append(nei)
+        # return False
+
+        def dfs(node):
+            if node==destination:
+                return True
+            vis[node]=True
+            for nei in adj[node]:
                 if not vis[nei]:
-                    vis[nei]=True
-                    q.append(nei)
-        return False
+                    if dfs(nei):
+                        return True
+            return False
+        return dfs(source)
+
+        
+
+
+
+
 
 
 
