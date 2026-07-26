@@ -15,11 +15,12 @@ class Solution:
         visited = set()
         visited.add(beginWord)
 
-        steps = 1
+        steps = 0
 
         while q:
 
             size = len(q)
+            steps += 1
 
             for _ in range(size):
 
@@ -37,6 +38,5 @@ class Solution:
                             visited.add(temp)
                             q.append(temp)
 
-            steps += 1
 
         return 0
