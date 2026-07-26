@@ -35,25 +35,48 @@ class Solution:
         # return c
 
         #approach 2 -> using graph dfs 
+        # n = len(matrix)
+        # v = [False]*n
+        # c = 0
+        # q = deque()
+
+        # for i in range(n):
+        #     if not v[i]:
+        #         c+=1
+        #         q.append(i)
+        #         v[i]=True
+        #         while q:
+        #             key = q.popleft()
+        #             for nei in range(n):
+        #                 if not v[nei] and matrix[key][nei]==1:
+        #                     v[nei]=True
+        #                     q.append(nei)
+        
+
+        # return c
+
+        #approach 3 -> dfs
+
+
         n = len(matrix)
         v = [False]*n
-        c = 0
-        q = deque()
-
+        
+        def dfs(node):
+            v[node]=True
+            for i in range(n):
+                if matrix[node][i]==1 and not v[i]:
+                    v[i] = True
+                    dfs(i)
+        c =0
         for i in range(n):
             if not v[i]:
                 c+=1
-                q.append(i)
                 v[i]=True
-                while q:
-                    key = q.popleft()
-                    for nei in range(n):
-                        if not v[nei] and matrix[key][nei]==1:
-                            v[nei]=True
-                            q.append(nei)
-        
-
+                dfs(i)
         return c
+
+
+
 
 
 
