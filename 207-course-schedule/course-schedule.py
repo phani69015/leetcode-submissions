@@ -7,10 +7,7 @@ class Solution:
 
         for i,j in prerequisites:
             adj[j].append(i)
-
-        for i in range(numCourses):
-            for nei in adj[i]:
-                indegree[nei]+=1
+            indegree[i]+=1
 
         q = deque()
 
